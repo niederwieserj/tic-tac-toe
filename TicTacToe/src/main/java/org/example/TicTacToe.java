@@ -34,7 +34,7 @@ public class TicTacToe {
         board.place(row, col, player.getMarker());
         board.print();
 
-        System.out.println("Dein Stein wurde gesetzt. (Ende der ersten User Story.)");
+        System.out.println("Dein Stein wurde gesetzt. (Ende der ersten User Story)");
         scanner.close();
     }
 }
