@@ -1,10 +1,13 @@
 package org.example;
 
+import java.util.Scanner;
+
 /**
  * Stores game state and methods for tic-tac-toe game
  */
 public class Board {
     private final char[][] cells = new char[3][3];
+    private Scanner scanner = new Scanner(System.in);
 
     /**
      * Initialize board
@@ -75,6 +78,23 @@ public class Board {
     }
 
     /**
+     * Get number from terminal StdIn
+     * @return Number
+     */
+    public int inputNumber() {
+        int number = -1;
+
+        try {
+            number = Integer.parseInt(scanner.next());
+        }
+        catch (NumberFormatException e) {
+            System.out.println("Invalid number");
+        }
+
+        return number;
+    }
+
+    /**
      * Print the board to the console
      */
     public void print() {
@@ -126,5 +146,21 @@ public class Board {
         }
 
         return false;
+    }
+
+    /**
+     * Check for draft (board is full)
+     * @return True if draft
+     */
+    public boolean checkForDraft() {
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 3; col++) {
+                if (cells[row][col] == ' ') {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 }

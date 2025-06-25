@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Board board = new Board();
-        Scanner s = new Scanner(System.in);
         char marker = 'x';
 
         System.out.println("====================================");
@@ -17,22 +16,20 @@ public class Main {
         while(true) {
             System.out.println("Please enter the row number: ");
             System.out.print("> ");
-            try {
-                int row = Integer.parseInt(s.next());
-            }
-            catch (NumberFormatException e) {
-                System.out.println("Invalid row number");
-            }
+            int row = board.inputNumber();
 
             System.out.println("Please enter the column number: ");
             System.out.print("> ");
-            int col = Integer.parseInt(s.next());
+            int col = board.inputNumber();
 
             board.place(row, col, marker);
             board.print();
 
             if(board.checkForWinner()) {
                 System.out.println(Character.toUpperCase(marker) + " won!");
+                break;
+            } else if(board.checkForDraft()) {
+                System.out.println("It's a draft!");
                 break;
             }
 
