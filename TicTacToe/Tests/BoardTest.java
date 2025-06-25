@@ -71,4 +71,18 @@ public class BoardTest {
         // Assert
         assertTrue(Arrays.deepEquals(cells, board.getCells()));
     }
+
+    @Test
+    public void testIfMarkerCanBePlacedTwice(){
+        //Arrange
+        Board board = new Board();
+        char[][] cells = {{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', 'X'}};
+
+        //Act
+        board.place(2, 2, 'x');
+        board.place(2, 2, 'o');
+
+        // Assert
+        assertTrue(Arrays.deepEquals(cells, board.getCells()));
+    }
 }

@@ -30,6 +30,11 @@ public class Board {
             return;
         }
 
+        if (cells[row][col] != ' ') {
+            System.out.print("That character is already placed");
+            return;
+        }
+
         cells[row][col] = marker;
     }
 
