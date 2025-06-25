@@ -85,4 +85,30 @@ public class BoardTest {
         // Assert
         assertTrue(Arrays.deepEquals(cells, board.getCells()));
     }
+
+    @Test
+    public void testPlaceMarkerRowOutOfBounds(){
+        //Arrange
+        Board board = new Board();
+        char[][] cells = {{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
+
+        //Act
+        board.place(3, 0, 'x');
+
+        // Assert
+        assertTrue(Arrays.deepEquals(cells, board.getCells()));
+    }
+
+    @Test
+    public void testPlaceMarkerColOutOfBounds(){
+        //Arrange
+        Board board = new Board();
+        char[][] cells = {{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
+
+        //Act
+        board.place(0, 3, 'x');
+
+        // Assert
+        assertTrue(Arrays.deepEquals(cells, board.getCells()));
+    }
 }
