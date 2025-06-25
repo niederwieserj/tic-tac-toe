@@ -40,7 +40,7 @@ public class BoardTest {
         char[][] cells = {{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', 'X'}};
 
         //Act
-        board.place(2, 2, 'X');
+        board.place(2, 2, 'x');
 
         // Assert
         assertTrue(Arrays.deepEquals(cells, board.getCells()));
@@ -59,4 +59,16 @@ public class BoardTest {
         assertTrue(!Arrays.deepEquals(cells, board.getCells()));
     }
 
+    @Test
+    public void testIfWrongMarkerCanBePlaced(){
+        //Arrange
+        Board board = new Board();
+        char[][] cells = {{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
+
+        //Act
+        board.place(2, 2, 'q');
+
+        // Assert
+        assertTrue(Arrays.deepEquals(cells, board.getCells()));
+    }
 }

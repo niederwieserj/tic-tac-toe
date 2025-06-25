@@ -23,6 +23,13 @@ public class Board {
     }
 
     public void place(int row, int col, char marker) {
+        marker = Character.toUpperCase(marker);
+
+        if (marker != 'X' && marker != 'O') {
+            System.out.print("Only characters 'X' and 'O' can be placed");
+            return;
+        }
+
         cells[row][col] = marker;
     }
 
