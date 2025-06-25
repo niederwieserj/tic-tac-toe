@@ -140,7 +140,7 @@ public class Board {
             return true;
         }
 
-        // Check main diagonal
+        // Check anti diagonal
         if (cells[0][2] != ' ' && cells[0][2] == cells[1][1] && cells[1][1] == cells[2][0]) {
             return true;
         }
