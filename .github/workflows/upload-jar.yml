@@ -27,12 +27,11 @@ jobs:
         java-version: '23'
         distribution: 'temurin'
         cache: maven
-    - name: Build and verify/test with Maven
+    - name: Build, test, upload
       working-directory: ./TicTacToe
       run: mvn --batch-mode --update-snapshots verify
-    - name: Upload
-      run: mkdir staging && cp ./TicTacToe/target/*.jar staging
-      uses: actions/upload-artifact@v4
+    - run: mkdir staging && cp ./TicTacToe/target/*.jar staging
+    - uses: actions/upload-artifact@v4
       with:
         name: Package
         path: staging
