@@ -1,1 +1,2 @@
 # tic-tac-toe
+This is a simple, two-player Tic Tac Toe game implemented for a 3x3 grid. Players take turns marking cells with "X" and "O". The game checks for a win or draw after each move. A player wins by placing three of their marks in a horizontal, vertical, or diagonal row. If all cells are filled without a winner, the game ends in a draw. The interface is minimal, and the game resets after completion.
