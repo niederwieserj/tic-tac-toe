@@ -1,5 +1,4 @@
 package org.example;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,26 +13,44 @@ public class Main {
         System.out.println("Place a marker to start");
 
         while(true) {
-            System.out.println("Please enter the row number: ");
-            System.out.print("> ");
-            int row = board.inputNumber();
+            while(true) {
+                System.out.println("Please enter the row number: ");
+                System.out.print("> ");
+                int row = board.inputNumber();
 
-            System.out.println("Please enter the column number: ");
-            System.out.print("> ");
-            int col = board.inputNumber();
+                System.out.println("Please enter the column number: ");
+                System.out.print("> ");
+                int col = board.inputNumber();
 
-            board.place(row, col, marker);
-            board.print();
+                board.place(row, col, marker);
+                board.print();
 
-            if(board.checkForWinner()) {
-                System.out.println(Character.toUpperCase(marker) + " won!");
-                break;
-            } else if(board.checkForDraft()) {
-                System.out.println("It's a draft!");
+                if(board.checkForWinner()) {
+                    System.out.println(Character.toUpperCase(marker) + " won!");
+                    break;
+                } else if(board.checkForDraft()) {
+                    System.out.println("It's a draft!");
+                    break;
+                }
+
+                marker = marker == 'x' ? 'o' : 'x';
+            }
+
+            int choice = -1;
+
+            do {
+                System.out.println("Wanna play again? (1=yes/0=no)");
+                System.out.print("> ");
+                choice = board.inputNumber();
+            }
+            while(choice != 0 && choice != 1);
+
+            if(choice == 0) {
                 break;
             }
 
-            marker = marker == 'x' ? 'o' : 'x';
+            board.clear();
+            board.print();
         }
     }
 }
