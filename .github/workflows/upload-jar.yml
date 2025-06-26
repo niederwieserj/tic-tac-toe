@@ -6,9 +6,12 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Java CI with Maven
+name: Build, test and upload .jar
 
-on: [push, pull_request]
+on:
+  pull_request:
+    branches:
+      - 'main'
 
 jobs:
   build:
@@ -26,4 +29,9 @@ jobs:
     - name: Build and verify/test with Maven
       working-directory: ./TicTacToe
       run: mvn --batch-mode --update-snapshots verify
-
+    - name: Upload
+      run: mkdir staging && cp ./TicTacToe/target/*.jar staging
+      uses: actions/upload-artifact@v4
+      with:
+        name: Package
+        path: staging
