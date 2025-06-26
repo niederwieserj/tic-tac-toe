@@ -36,16 +36,6 @@ public class Board {
     }
 
     /**
-     * Check if a cell is empty
-     * @param row Row coordinate
-     * @param col Column coordinate
-     * @return True if empty
-     */
-    public boolean isCellEmpty(int row, int col) {
-        return cells[row][col] == ' ';
-    }
-
-    /**
      * Place a marker on the board at a position defined by params row, col
      * @param row Row into which the marker should be placed
      * @param col Column into which the marker should be placed
@@ -86,8 +76,7 @@ public class Board {
 
         try {
             number = Integer.parseInt(scanner.next());
-        }
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             System.out.println("Invalid number");
         }
 
@@ -115,22 +104,14 @@ public class Board {
      * @return True if winner found
      */
     public boolean checkForWinner() {
-        char marker;
-
-        // Check rows
-        for (int row = 0; row < 3; row++) {
-            marker = cells[row][0];
-
-            if (cells[row][1] == marker && cells[row][2] == marker && marker != ' ') {
+        for (int i = 0; i < 3; i++) {
+            // Check row
+            if (cells[i][0] != ' ' && cells[i][0] == cells[i][1] && cells[i][1] == cells[i][2]) {
                 return true;
             }
-        }
 
-        // Check cols
-        for (int col = 0; col < 3; col++) {
-            marker = cells[0][col];
-
-            if (cells[1][col] == marker && cells[2][col] == marker && marker != ' ') {
+            // Check col
+            if (cells[0][i] != ' ' && cells[0][i] == cells[1][i] && cells[1][i] == cells[2][i]) {
                 return true;
             }
         }
